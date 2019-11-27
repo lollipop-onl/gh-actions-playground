@@ -11,4 +11,4 @@ jobs:
         with:
           node-version: 12.x
       - run: yarn install
-      - run: yarn run lint:fjx
+      - run: yarn run lint:fix
