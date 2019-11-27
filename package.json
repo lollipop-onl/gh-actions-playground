@@ -4,8 +4,7 @@
   "author": "lollipop.onl",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src",
-    "lint:fix": "eslint src"
+    "lint": "eslint src"
   },
   "devDependencies": {
     "eslint": "^6.7.0"
