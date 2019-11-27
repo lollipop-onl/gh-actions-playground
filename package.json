@@ -2,5 +2,12 @@
   "name": "gh-actions-playground",
   "repository": "https://github.com/lollipop-onl/gh-actions-playground.git",
   "author": "lollipop.onl",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "eslint src"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.0"
+  }
 }
