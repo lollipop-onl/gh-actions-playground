@@ -3,4 +3,5 @@ const obj = {
   bar: 2
 };
 
+// eslint-disable-next-line no-console
 console.log(obj);
