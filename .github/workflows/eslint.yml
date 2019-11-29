@@ -12,3 +12,16 @@ jobs:
           node-version: 12.x
       - run: yarn install
       - run: yarn run lint --fix --max-warnings 0
+      - name: Set git global config
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Push auto-fixed files
+        run: |
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "👕 Fixed auto-fixable ESLint errors by github-actions"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
