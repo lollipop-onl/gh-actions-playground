@@ -18,6 +18,7 @@ jobs:
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Push auto-fixed files
         run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           if (git diff --shortstat | grep '[0-9]'); then \
             git add .; \
             git commit -m "👕 Fixed auto-fixable ESLint errors by github-actions"; \
