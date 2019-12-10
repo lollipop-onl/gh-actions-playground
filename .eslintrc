@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "always"],
+    "no-console": "warn"
+  }
+}
