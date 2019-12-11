@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nuxt-ts",
-    "generate": "nuxt-ts generate",
+    "build": "nuxt-ts build",
+    "analyze": "nuxt-ts build --spa --analyze",
     "lintjs": "eslint --ext .ts,.js,.vue .",
     "lintjs:fix": "yarn lintjs --fix",
     "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
