@@ -1,9 +1,15 @@
 <template>
   <div class="page-content">
-    <h1 class="title">
-      Hello you.
-    </h1>
-    <p>This is a playground of GitHub Actions</p>
+    <h1>Enter your name</h1>
+    <form @submit.prevent="onSubmit">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name">
+      </div>
+      <div>
+        <button type="submit">Go to the next</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -11,7 +17,20 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
-export default class extends Vue {}
+export default class IndexPage extends Vue {
+  /** ユーザー名 */
+  name = '';
+
+  /** 次のステップにすすむ */
+  onSubmit () {
+    this.$router.push({
+      path: '/profile',
+      query: {
+        name: this.name
+      }
+    });
+  }
+}
 </script>
 
 <style lang="scss" scoped>
