@@ -1,4 +1,8 @@
-<template lang="pug">
+<template>
+  <div class="page-content">
+    <h1 class="title">Welcome!</h1>
+    <p>Nice to meet you, {{name}}!</p>
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,5 +27,10 @@ export default class ProfilePage extends Vue {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
+  .page-content {
+    & > .title {
+      font-weight: normal;
+    }
+  }
 </style>
