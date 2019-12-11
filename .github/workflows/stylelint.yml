@@ -1,0 +1,38 @@
+name: Stylelintエラーチェック＋自動修正
+on:
+  push:
+    paths:
+      - '**.vue'
+      - '**.scss'
+      - '.stylelintrc.yml'
+
+jobs:
+  build:
+    name: Stylelintチェック
+    runs-on: ubuntu-latest
+    steps:
+      - name: ブランチをチェックアウト
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: パッケージインストール
+        run: yarn install
+      - name: Stylelintチェック実行
+        run: yarn lintcss:fix
+      - name: Stylelintの自動修正分をPush
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "👕 Fixed auto-fixable Stylelint errors by github-actions"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

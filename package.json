@@ -7,7 +7,9 @@
     "dev": "nuxt-ts",
     "generate": "nuxt-ts generate",
     "lintjs": "eslint --ext .ts,.js,.vue .",
-    "lintjs:fix": "yarn lintjs --fix"
+    "lintjs:fix": "yarn lintjs --fix",
+    "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
+    "lintcss:fix": "yarn lintcss --fix"
   },
   "dependencies": {
     "@nuxt/typescript-build": "^0.5.0",
