@@ -35,6 +35,8 @@ jobs:
         run: yarn install
       - name: 静的ビルド
         run: yarn build --analyze
+        env:
+          BASE_PATH: ./
       - name: デプロイ
         uses: peaceiris/actions-gh-pages@v2
         env:

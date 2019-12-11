@@ -4,7 +4,7 @@
     <form @submit.prevent="onSubmit">
       <div>
         <label for="name">Name</label>
-        <input id="name" type="text">
+        <input id="name" type="text" v-model="name">
       </div>
       <div>
         <button type="submit">
