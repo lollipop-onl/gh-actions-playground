@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - src/**
+      - nuxt.config.ts
+      - package.json
 
 jobs:
   build-deploy:

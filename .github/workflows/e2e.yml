@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-#      - name: Node.jsのセットアップ
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: 12.x
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
 #      - name: yarnのキャッシュディレクトリパスを取得
 #        id: yarn-cache
 #        run: echo "::set-output name=dir::$(yarn cache dir)"
