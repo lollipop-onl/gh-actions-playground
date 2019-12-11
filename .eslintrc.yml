@@ -1,2 +1,9 @@
 extends:
   - '@nuxtjs/eslint-config-typescript'
+overrides:
+  - files:
+      - e2e/**/*.ts
+    plugins:
+      - eslint-plugin-testcafe
+    extends:
+      - plugin:testcafe/recommended
