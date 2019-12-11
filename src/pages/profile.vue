@@ -3,7 +3,9 @@
     <h1 class="title">
       Welcome!
     </h1>
-    <p id="greeting">Nice to meet you, {{ name }}!</p>
+    <p id="greeting">
+      Nice to meet you, {{ name }}!
+    </p>
   </div>
 </template>
 
