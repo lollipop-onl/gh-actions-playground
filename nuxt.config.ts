@@ -1,6 +1,6 @@
 import { Configuration } from '@nuxt/types'
 
-const { BASE_PATH = '' } = process.env;
+const { BASE_PATH = '' } = process.env
 
 const config: Configuration = {
   mode: 'spa',
