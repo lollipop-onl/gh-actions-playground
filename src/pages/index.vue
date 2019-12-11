@@ -3,6 +3,7 @@
     <h1 class="title">
       Hello you.
     </h1>
+    <p>This is a playground of GitHub Actions</p>
   </div>
 </template>
 
