@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Hello you.</h1>
+  <div class="page-content">
+    <h1 class="title">Hello you.</h1>
   </div>
 </template>
 
@@ -11,4 +11,10 @@ import { Component, Vue } from 'nuxt-property-decorator'
 export default class extends Vue {}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .page-content {
+    & > .title {
+      font-weight: normal;
+    }
+  }
+</style>
