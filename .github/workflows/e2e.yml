@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - run: webdriver-manager start --ie
 #      - name: yarnのキャッシュディレクトリパスを取得
 #        id: yarn-cache
 #        run: echo "::set-output name=dir::$(yarn cache dir)"
