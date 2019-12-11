@@ -4,30 +4,38 @@ on: push
 jobs:
   test:
     name: E2Eテスト
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [12]
     steps:
       - name: ブランチをチェックアウト
         uses: actions/checkout@master
         with:
           fetch-depth: 1
-      - name: Node.jsのセットアップ
-        uses: actions/setup-node@v1
+#      - name: Node.jsのセットアップ
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: 12.x
+#      - name: yarnのキャッシュディレクトリパスを取得
+#        id: yarn-cache
+#        run: echo "::set-output name=dir::$(yarn cache dir)"
+#      - name: node_modulesキャッシュ設定
+#        uses: actions/cache@v1
+#        with:
+#          path: ${{ steps.yarn-cache.outputs.dir }}
+#          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+#          restore-keys: |
+#            ${{ runner.os }}-yarn-
+#      - name: パッケージインストール
+#        run: yarn install
+#      - name: TestCafeを実行
+#        run: yarn testcafe "chrome:headless" e2e -s takeOnFails=true
+      - name: TestCafe実行
+        uses: DevExpress/testcafe-action@latest
         with:
-          node-version: 12.x
-      - name: yarnのキャッシュディレクトリパスを取得
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: node_modulesキャッシュ設定
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: パッケージインストール
-        run: yarn install
-      - name: TestCafeを実行
-        run: yarn testcafe "chrome:headless" e2e -s takeOnFails=true
+          args: chrome e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
         if: failure()
         uses: actions/upload-artifact@v1
