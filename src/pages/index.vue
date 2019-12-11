@@ -1,6 +1,8 @@
 <template>
   <div class="page-content">
-    <h1 class="title">Hello you.</h1>
+    <h1 class="title">
+      Hello you.
+    </h1>
   </div>
 </template>
 
