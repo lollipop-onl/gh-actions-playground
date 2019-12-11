@@ -1,0 +1,8 @@
+{
+  "internet explorer@11": {
+    "se:ieOptions" : {
+      "enablePersistentHover" : true,
+      "requireWindowFocus" : true
+    }
+  }
+}
