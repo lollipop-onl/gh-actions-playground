@@ -24,6 +24,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: パッケージインストール
+        run: yarn install
       - name: TestCafeを実行
         run: yarn testcafe chrome e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
