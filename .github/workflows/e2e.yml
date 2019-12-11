@@ -38,14 +38,12 @@ jobs:
 #        run: yarn install
 #      - name: TestCafeを実行
 #        run: yarn testcafe "chrome:headless" e2e -s takeOnFails=true
-      - uses: warrenbuckley/Setup-Nuget@v1
-      - run: nuget install Selenium.WebDriver.IEDriver -Version 3.150.0
       - name: Install Selenium provider
         run: yarn add testcafe-browser-provider-selenium
       - name: TestCafe実行
         uses: DevExpress/testcafe-action@latest
         with:
-          args: selenium:internet\ explorer:WINDOWS e2e -s takeOnFails=true
+          args: selenium:internet\ explorer e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
         if: failure()
         uses: actions/upload-artifact@v1
