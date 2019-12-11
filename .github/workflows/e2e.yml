@@ -27,7 +27,7 @@ jobs:
       - name: パッケージインストール
         run: yarn install
       - name: TestCafeを実行
-        run: yarn testcafe chrome e2e -s takeOnFails=true
+        run: yarn testcafe "chrome:headless" e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
         if: failure()
         uses: actions/upload-artifact@v1
