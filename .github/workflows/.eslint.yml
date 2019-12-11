@@ -1,0 +1,39 @@
+name: ESLintエラーチェック＋自動修正
+on:
+  push:
+    paths:
+      - '**.js'
+      - '**.ts'
+      - '**.vue'
+      - '.eslintrc.yml'
+
+jobs:
+  build:
+    name: ESLintチェック
+    runs-on: ubuntu-latest
+    steps:
+      - name: ブランチをチェックアウト
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Node.jsのセットアップ
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: パッケージインストール
+        run: yarn install
+      - name: ESLintチェック実行
+        run: yarn lintjs:fix --max-warnings 0
+      - name: ESLintの自動修正分をPush
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "👕 Fixed auto-fixable ESLint errors by github-actions"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
