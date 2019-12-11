@@ -1,7 +1,9 @@
 <template>
   <div class="page-content">
-    <h1 class="title">Welcome!</h1>
-    <p>Nice to meet you, {{name}}!</p>
+    <h1 class="title">
+      Welcome!
+    </h1>
+    <p>Nice to meet you, {{ name }}!</p>
   </div>
 </template>
 
