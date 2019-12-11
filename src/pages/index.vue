@@ -4,10 +4,12 @@
     <form @submit.prevent="onSubmit">
       <div>
         <label for="name">Name</label>
-        <input type="text" id="name">
+        <input id="name" type="text">
       </div>
       <div>
-        <button type="submit">Go to the next</button>
+        <button type="submit">
+          Go to the next
+        </button>
       </div>
     </form>
   </div>
@@ -28,7 +30,7 @@ export default class IndexPage extends Vue {
       query: {
         name: this.name
       }
-    });
+    })
   }
 }
 </script>

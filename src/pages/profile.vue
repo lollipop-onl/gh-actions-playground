@@ -2,22 +2,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class ProfilePage extends Vue {
   /** ユーザー名 */
   get name () {
-    const { name } = this.$route.query;
+    const { name } = this.$route.query
 
-    return Array.isArray(name) ? name[0] : name;
+    return Array.isArray(name) ? name[0] : name
   }
 
   /** ライフサイクル */
-  beforeMount() {
+  beforeMount () {
     // ユーザー名が指定されなかったらトップへ飛ばす
     if (!this.name) {
-      this.$router.replace('/');
+      this.$router.replace('/')
     }
   }
 }
