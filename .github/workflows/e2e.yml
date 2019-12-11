@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: ブランチをチェックアウト
         uses: actions/checkout@master
-        with:
-          fetch-depth: 1
       - name: Node.jsのセットアップ
         uses: actions/setup-node@v1
         with:
@@ -35,7 +33,7 @@ jobs:
       - name: TestCafe実行
         uses: DevExpress/testcafe-action@latest
         with:
-          args: chrome e2e -s takeOnFails=true
+          args: all e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
         if: failure()
         uses: actions/upload-artifact@v1
