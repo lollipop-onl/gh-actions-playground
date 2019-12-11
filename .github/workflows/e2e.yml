@@ -6,9 +6,9 @@ jobs:
     name: E2Eテスト
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        browser: ['chrome:headless', 'chrome:headless:emulation:device=iphone X']
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: ブランチをチェックアウト
         uses: actions/checkout@master
@@ -33,7 +33,7 @@ jobs:
       - name: TestCafe実行
         uses: DevExpress/testcafe-action@latest
         with:
-          args: ${{ matrix.browser }} e2e -s takeOnFails=true
+          args: all e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
         if: failure()
         uses: actions/upload-artifact@v1
