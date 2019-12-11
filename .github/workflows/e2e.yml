@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        browser: [chrome:headless, chrome:emulation:device=iphone X]
+        browser: ['chrome:headless', 'chrome:emulation:device=iphone X']
     steps:
       - name: ブランチをチェックアウト
         uses: actions/checkout@master
