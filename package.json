@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nuxt-ts",
-    "generate": "nuxt-ts generate"
+    "generate": "nuxt-ts generate",
+    "lintjs": "eslint --ext .ts,.js,.vue .",
+    "lintjs:fix": "yarn lintjs --fix"
   },
   "dependencies": {
     "@nuxt/typescript-build": "^0.5.0",
@@ -13,6 +15,7 @@
     "nuxt-property-decorator": "^2.5.0"
   },
   "devDependencies": {
-    "@nuxt/typescript-runtime": "^0.3.1"
+    "@nuxt/typescript-runtime": "^0.3.1",
+    "eslint": "^6.7.2"
   }
 }
