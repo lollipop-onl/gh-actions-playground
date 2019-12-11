@@ -5,4 +5,4 @@ const config: Configuration = {
   buildModules: ['@nuxt/typescript-build']
 }
 
-module.exports = config;
+module.exports = config
