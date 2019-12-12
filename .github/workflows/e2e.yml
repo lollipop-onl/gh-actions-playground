@@ -10,7 +10,8 @@ jobs:
       matrix:
 #        os: [ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        browser: ['safari:MAC', 'safari:mac', 'chrome', 'firefox:WINDOWS', 'opera:WINDOWS']
+#        browser: ['safari:MAC', 'safari:mac', 'chrome', 'firefox:WINDOWS', 'opera:WINDOWS']
+        browser: ['safari@3.0.3:mac']
     services:
       selenium:
         image: selenium/standalone-chrome:3.141.59-vanadium
