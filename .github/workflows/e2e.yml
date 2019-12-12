@@ -10,6 +10,7 @@ jobs:
       matrix:
 #        os: [ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
+        browser: [safari, chrome, firefox, android, iphone, ipad, opera]
     services:
       selenium:
         image: selenium/standalone-chrome:3.141.59-vanadium
@@ -24,7 +25,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - run: webdriver-manager start --ie
 #      - name: yarnのキャッシュディレクトリパスを取得
 #        id: yarn-cache
 #        run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -44,7 +44,7 @@ jobs:
       - name: TestCafe実行
         uses: DevExpress/testcafe-action@latest
         with:
-          args: selenium:internet\ explorer@11 e2e -s takeOnFails=true
+          args: selenium:${{ matrix.browser }} e2e -s takeOnFails=true
       - name: テスト失敗時のスクリーンショットを保存
         if: failure()
         uses: actions/upload-artifact@v1
