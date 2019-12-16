@@ -1,0 +1,14 @@
+name: ESLintチェック
+on: push
+
+jobs:
+  eslint:
+    name: ESLintチェック
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      with:
+        version: 12.x
+      - name: ESLintチェック実行
+        run: yarn lintjs
