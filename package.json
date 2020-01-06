@@ -1,5 +1,6 @@
 {
   "name": "gh-actions-playground",
+  "description": "sample",
   "repository": "https://github.com/lollipop-onl/gh-actions-playground.git",
   "author": "lollipop.onl",
   "license": "MIT",
