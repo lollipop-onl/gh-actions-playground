@@ -3,11 +3,6 @@ on:
   pull_request:
     type:
       - synchronize
-    paths:
-      - src/**
-      - nuxt.config.ts
-      - package.json
-
 
 jobs:
   build-deploy:
