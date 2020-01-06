@@ -1,8 +1,5 @@
 name: PullRequestの内容をプレビュー
-on:
-  pull_request:
-    type:
-      - synchronize
+on: pull_request
 #    paths:
 #      - src/**
 #      - nuxt.config.ts
