@@ -1,8 +1,8 @@
 name: PullRequestの内容をプレビュー
-on: push
-#  pull_request:
-#    type:
-#      - synchronize
+on:
+  pull_request:
+    type:
+      - synchronize
 #    paths:
 #      - src/**
 #      - nuxt.config.ts
@@ -12,7 +12,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     env:
-      AWS_S3_BUCKET: gh-actions-playground
+      AWS_S3_BUCKET: gh-actions-playground-pr-preview
     steps:
       - name: ブランチをチェックアウト
         uses: actions/checkout@master
@@ -45,6 +45,8 @@ jobs:
           BASE_PATH: ${{ toJSON(env).AWS_S3_BUCKET }}
       - name: デプロイ
         uses: jakejarvis/s3-sync-action@v0.5.0
+        with:
+          args: s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/${GITHUB_REF#refs/heads/} --acl public-read
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
