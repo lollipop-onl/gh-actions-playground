@@ -25,13 +25,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: yarnのキャッシュディレクトリパスを取得
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 各種変数を取得
+        id: vars
+        run: |
+          echo "::set-output name=yarn-cache::$(yarn cache dir)"
+          echo "::set-output name=pr-number::$($GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
       - name: node_modulesキャッシュ設定
         uses: actions/cache@v1
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ steps.vars.outputs.yarn-cache }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -48,12 +50,13 @@ jobs:
           BASE_PATH: ${{ toJSON(env).AWS_S3_BUCKET }}
       - name: デプロイ
         run: |
-          aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/${GITHUB_REF#refs/pull/%/merge} --acl public-read
+          aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/$BASE_PATH --acl public-read
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-northeast-1
           SOURCE_DIR: ./dist
+          BASE_PATH: ${{ steps.vars.outputs.pr-number }}
       - name: ビルドファイルの統計を保存
         uses: actions/upload-artifact@v1
         with:
