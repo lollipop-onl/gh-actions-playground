@@ -1,0 +1,15 @@
+name: Yarn Cache Dir表示
+on: push
+
+jobs:
+  yarn-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - name: Yarnキャッシュディレクトリパス取得
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - run: echo $YARN_CACHE_DIR
+        env:
+          $YARN_CACHE_DIR: ${{ steps.yarn-cache.outputs.dir }}
