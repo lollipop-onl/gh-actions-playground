@@ -5,20 +5,23 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: v12
       - run: echo $GITHUB_REF
-      - id: vars
-        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/v}"
-      - run: yarn version --new-version ${GITHUB_REF#refs/tags/v} --no-git-tag-version
-      - run: cat package.json
-      - run: |
-          git remote set-url origin https://github-actions:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
-          git config --global user.name $GITHUB_ACTOR
-          git config --global user.email $GITHUB_ACTOR@users.noreply.github.com
-      - run: |
-          git add .;
-          git commit -m "Fixed auto-fixable ESLint errors";
-          git push origin HEAD:${GITHUB_REF};
+      - run: echo $GITHUB_HEAD_REF
+      - run: echo $GITHUB_BASE_REF
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: v12
+#      - run: echo $GITHUB_REF
+#      - id: vars
+#        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/v}"
+#      - run: yarn version --new-version ${GITHUB_REF#refs/tags/v} --no-git-tag-version
+#      - run: cat package.json
+#      - run: |
+#          git remote set-url origin https://github-actions:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+#          git config --global user.name $GITHUB_ACTOR
+#          git config --global user.email $GITHUB_ACTOR@users.noreply.github.com
+#      - run: |
+#          git add .;
+#          git commit -m "Fixed auto-fixable ESLint errors";
+#          git push origin HEAD:${GITHUB_REF};
