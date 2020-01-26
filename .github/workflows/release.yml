@@ -5,7 +5,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(github) }}"
+      - run: echo "${{ toJson(job) }}"
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
