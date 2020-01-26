@@ -1,0 +1,19 @@
+name: E2E test on TestCafe
+on: push
+
+jobs:
+  e2e:
+    name: E2E test
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [maxos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: DevExpress/testcafe-action@latest
+        with:
+          args: "safari e2e"
