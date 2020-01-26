@@ -5,7 +5,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $GITHUB_REF
+      - run: |
+          echo ${{ github }}
       - run: echo ${{ github.ref }}
       - run: echo $GITHUB_HEAD_REF
       - run: echo $GITHUB_BASE_REF
