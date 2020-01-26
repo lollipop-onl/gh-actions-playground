@@ -1,5 +1,5 @@
 name: scheduled workflow
-on: pull_request
+on: push
 
 jobs:
   release:
@@ -7,7 +7,6 @@ jobs:
     steps:
       - run: |
           echo "${{ toJson(github) }}"
-          echo "${{ toJson(github.event) }}"
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
