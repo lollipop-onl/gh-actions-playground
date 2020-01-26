@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ github }}
+          echo ${{ toJson(github) }}
+          echo ${{ toJson(github.event) }}
       - run: echo ${{ github.ref }}
       - run: echo $GITHUB_HEAD_REF
       - run: echo $GITHUB_BASE_REF
