@@ -1,7 +1,5 @@
 name: scheduled workflow
-on:
-  schedule:
-    - cron: '* * * * *'
+on: push
 
 jobs:
   release:
