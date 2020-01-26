@@ -1,0 +1,11 @@
+name: on Release
+on: release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $GITHUB_REF
+      - env:
+          github: ${{ github }}
+        run: echo $github
