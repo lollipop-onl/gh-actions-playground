@@ -1,5 +1,7 @@
 name: scheduled workflow
-on: push
+on:
+  push: true
+  pull_request: true
 
 jobs:
   release:
