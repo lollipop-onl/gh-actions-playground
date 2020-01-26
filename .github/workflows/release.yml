@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo $GITHUB_REF
-      - env:
-          github: ${{ github }}
-        run: echo $github
+      - run: echo $GITHUB_REF#refs/tags/
+      - id: outputs
+        run: echo "::set-output name=version::$GITHUB_REF#refs/tags/"
+      - run: echo $VERSION
+        env:
+          $VERSION: ${{ steps.outputs.outputs.version }}
