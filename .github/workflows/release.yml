@@ -8,9 +8,7 @@ jobs:
       - run: |
           echo "${{ toJson(github) }}"
           echo "${{ toJson(github.event) }}"
-      - run: echo ${{ github.ref }}
-      - run: echo $GITHUB_HEAD_REF
-      - run: echo $GITHUB_BASE_REF
+      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
 #        with:
