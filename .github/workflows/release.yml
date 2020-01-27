@@ -1,18 +1,31 @@
-name: scheduled workflow
+name: Pull Requestプレビュー
 on:
   pull_request:
-    type: [opened, synchronize]
+    type: [opened, synchronize, reopened]
+env:
+  AWS_S3_BUCKET: gh-actions-pr-preview
 
 jobs:
   comment:
     name: プレビューURLコメント
     runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
     steps:
-      - run: echo "${{ toJson(github.event) }}"
+      - name: Pull Request番号を取得
+        id: pull-number
+        run: echo "::set-output name=number::$(echo $GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
       - uses: actions/github-script@0.2.0
         with:
           github-token: ${{ github.token }}
           script: |
-            console.log(process.env);
+            const { ref } = context.payload.pull_request.head;
+            const branchName = ref.replace(/^.*\//, '');
+            const { AWS_S3_BUCKET, BASE_PATH } = process.env;
+            const previewUrl = `http://${AWS_S3_BUCKET}.s3-website-ap-northeast-1.amazonaws.com/${BASE_PATH}/`;
+
+            github.issues.createComment({
+              ...context.issue,
+              body: `プレビューは以下のURLでご確認ください。\n\n> ${previewUrl}`
+            })
         env:
           BASE_PATH: ${{ steps.pull-number.outputs.number }}
