@@ -1,5 +1,7 @@
 name: scheduled workflow
-on: pull_request
+on:
+  pull_request:
+    type: [opened, synchronize]
 
 jobs:
   comment:
