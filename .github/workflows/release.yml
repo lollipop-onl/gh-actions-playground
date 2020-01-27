@@ -5,9 +5,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(runner) }}"
-      - run: ls ${{ runner.tool_cache }}
-      - run: echo $(ls ${{ runner.tool_cache }})
+      - run: echo "${{ toJson(secrets) }}"
+      - run: ls ${{ secrets.dummy }}
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
