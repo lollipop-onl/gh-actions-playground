@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ toJson(secrets) }}"
-      - run: ls ${{ secrets.dummy }}
+      - run: echo "${{ secrets.dummy }}"
       - run: echo "${{ toJson(strategy) }}"
       - run: echo "${{ toJson(matrix) }}"
 #      - run: cat ${{ github.event_path }}
