@@ -5,17 +5,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(strategy) }}"
-      - run: echo "${{ toJson(matrix) }}"
-      - run: echo "${{ toJson(matrix.dummy) }}"
-  release2:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-18.04, ubuntu-16.04]
-    steps:
-      - run: echo "${{ toJson(strategy) }}"
-      - run: echo "${{ toJson(matrix) }}"
+      - run: |
+          echo "${{ contains('Hello World', 'llo') }}"
+          echo "${{ contains(['hello', 'world'], 'world') }}"
+          echo "${{ contains(['hello', 'world'], 'llo') }}"
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
