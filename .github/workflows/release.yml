@@ -5,8 +5,8 @@ jobs:
   comment:
     name: プレビューURLコメント
     runs-on: ubuntu-latest
-    if: github.event.action == 'opened'
     steps:
+      - run: echo "${{ toJson(github.event) }}"
       - uses: actions/github-script@0.2.0
         with:
           github-token: ${{ github.token }}
