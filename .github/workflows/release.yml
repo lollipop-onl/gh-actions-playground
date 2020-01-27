@@ -13,7 +13,7 @@ jobs:
         #
         ports:
           # ホストとサービスコンテナのTCPポート6379をオープンする
-          - 6379:6379
+          - 8080/udp
     steps:
       - run: echo "${{ toJson(job) }}"
       - run: echo "${{ toJson(job.services) }}"
