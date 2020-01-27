@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ toJson(runner) }}"
-      - run: echo ls ${{ runner.tool_cache }}
+      - run: ls ${{ runner.tool_cache }}
+      - run: echo $(ls ${{ runner.tool_cache }})
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
