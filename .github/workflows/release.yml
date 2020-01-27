@@ -4,10 +4,19 @@ on: push
 jobs:
   release:
     runs-on: ubuntu-latest
+    # `runner-job`と実行するサービスコンテナ
+    services:
+      # サービスコンテナへのアクセスに使われるラベル
+      redis:
+        # Docker Hubイメージ
+        image: redis
+        #
+        ports:
+          # ホストとサービスコンテナのTCPポート6379をオープンする
+          - 6379:6379
     steps:
       - run: echo "${{ toJson(job) }}"
-      - run: echo "${{ toJson(job.container.id) }}"
-      - run: echo "${{ toJson(job.container.network) }}"
+      - run: echo "${{ toJson(job.services) }}"
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
