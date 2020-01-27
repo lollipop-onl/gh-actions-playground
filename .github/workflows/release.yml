@@ -7,8 +7,10 @@ jobs:
     steps:
       - run: |
           echo "${{ contains('Hello World', 'llo') }}"
-          echo "${{ contains(toJson(['hello', 'world']), 'world') }}"
-          echo "${{ contains(toJson(['hello', 'world']), 'llo') }}"
+          echo "${{ contains(toJson($arr), 'world') }}"
+          echo "${{ contains(toJson($arr), 'llo') }}"
+        env:
+          arr: ['hello', 'world']
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
