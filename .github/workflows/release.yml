@@ -4,18 +4,10 @@ on: push
 jobs:
   release:
     runs-on: ubuntu-latest
-    container:
-      image: node:10.16-jessie
-      env:
-        NODE_ENV: development
-      ports:
-        - 80
-      volumes:
-        - my_docker_volume:/volume_mount
-      options: --cpus 1
     steps:
       - run: echo "${{ toJson(job) }}"
-      - run: echo "${{ toJson(job.container) }}"
+      - run: echo "${{ toJson(job.container.id) }}"
+      - run: echo "${{ toJson(job.container.network) }}"
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
