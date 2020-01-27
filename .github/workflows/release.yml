@@ -6,11 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "${{ contains('Hello World', 'llo') }}"
-          echo "${{ contains(toJson($arr), 'world') }}"
-          echo "${{ contains(toJson($arr), 'llo') }}"
-        env:
-          arr: ['hello', 'world']
+          echo "${{ format('{{Hello {0} {1} {2}}}', 'Mona', 'the', 'Octocat') }}"
+          echo "${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }}"
 #      - run: cat ${{ github.event_path }}
 #      - uses: actions/checkout@v2
 #      - uses: actions/setup-node@v1
