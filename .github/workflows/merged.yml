@@ -1,0 +1,13 @@
+# 差分発生用コメント
+
+name: マージされたときだけ実行
+on:
+  pull_request:
+    type: [closed]
+
+jobs:
+  merged:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ toJson(github.event) }}"
+      - run: echo ${{ github.event.pull_request.merged }}
