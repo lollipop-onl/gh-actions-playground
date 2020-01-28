@@ -3,7 +3,7 @@
 name: マージされたときだけ実行
 on:
   pull_request:
-    type: [closed]
+    types: [closed]
 
 jobs:
   merged:
