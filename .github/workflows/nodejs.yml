@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v1
-      - uses: actions/github-script@v0
+      - uses: actions/github-script@master
         id: pr
         with:
           script: |
