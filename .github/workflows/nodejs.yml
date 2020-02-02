@@ -13,4 +13,4 @@ jobs:
           github-token: ${{ github.token }}
           script: |
             return { number: 'hello' };
-      - run: echo "${{ steps.pr.outputs.number }}"
+      - run: echo "${{ toJson(steps.pr) }}"
