@@ -11,7 +11,5 @@ jobs:
         id: pr
         with:
           script: |
-            const { number } = context.payload.pull_request;
-
-            return { number };
+            return { number: 'hello' };
       - run: echo "${{ steps.pr.outputs.number }}"
