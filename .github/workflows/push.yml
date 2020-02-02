@@ -1,0 +1,14 @@
+name: Pushするみたいな
+on: push
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "hello world" > hello.txt
+      - run: ls
+      - run: git remote -v
+      - run: git config --global -l
+      - run: git config --local -l
+      - run: git config -l
