@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "${{ toJson(github.event) }}"
+          cat <<EOS${{ toJson(github.event) }}EOS
