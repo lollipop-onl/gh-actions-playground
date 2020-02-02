@@ -10,6 +10,7 @@ jobs:
       - uses: actions/github-script@master
         id: pr
         with:
+          github-token: ${{ github.token }}
           script: |
             return { number: 'hello' };
       - run: echo "${{ steps.pr.outputs.number }}"
