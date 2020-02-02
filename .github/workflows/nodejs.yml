@@ -1,0 +1,17 @@
+name: Node.jsでスクリプト実行
+on: push
+
+jobs:
+  node:
+    name: Run node
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+      - uses: actions/github-script@v0
+        id: pr
+        with:
+          script: |
+            const { number } = context.payload.pull_request;
+
+            return { number };
+      - run: echo "${{ steps.pr.outputs.number }}"
