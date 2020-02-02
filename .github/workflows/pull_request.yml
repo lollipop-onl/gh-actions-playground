@@ -3,5 +3,6 @@ on: pull_request
 jobs:
   log:
     runs-on: ubuntu-latest
-    run: |
-      echo ${{ github.event.pull_request.action }}
+    steps:
+      - run: |
+          echo ${{ github.event.pull_request.action }}
