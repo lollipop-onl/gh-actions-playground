@@ -1,8 +1,12 @@
 on: pull_request
 
 jobs:
-  log:
+  every:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          cat <<EOS${{ toJson(github.event) }}EOS
+      - run: echo run every!
+  open:
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo run only opened
