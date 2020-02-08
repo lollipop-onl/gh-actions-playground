@@ -1,0 +1,12 @@
+on: pull_request
+
+jobs:
+  every:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo run every!
+  open:
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo run only opened

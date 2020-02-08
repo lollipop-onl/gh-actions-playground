@@ -1,0 +1,14 @@
+name: Pushするみたいな
+on: push
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "hello world" > hello.txt
+      - run: ls
+      - run: |
+          git add .
+          git commit -m "add new file"
+      - run: git push origin

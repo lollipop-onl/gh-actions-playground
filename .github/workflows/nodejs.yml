@@ -1,0 +1,16 @@
+name: Node.jsでスクリプト実行
+on: push
+
+jobs:
+  node:
+    name: Run node
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+      - uses: actions/github-script@master
+        id: pr
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            return { number: 'hello' };
+      - run: echo "${{ toJson(steps.pr) }}"
