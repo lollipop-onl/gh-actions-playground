@@ -23,8 +23,8 @@ jobs:
         id: pull-number
         run: echo "::set-output name=number::$(echo $GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
       - run: |
-          mkdir -p dist public/${{ steps.pull-number.outputs.number }}/
-          cp -r dist public/${{ steps.pull-number.outputs.number }}/
+          mkdir -p public/${{ steps.pull-number.outputs.number }}/
+          cp -r dist/* public/${{ steps.pull-number.outputs.number }}/
       - uses: peaceiris/actions-gh-pages@v2
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
