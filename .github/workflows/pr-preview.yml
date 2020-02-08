@@ -41,15 +41,13 @@ jobs:
         with:
           github-token: ${{ github.token }}
           script: |
-            const { number, pull_request} = context.payload;
-            const { head, repo } = pull_request;
-            const { ref } = head;
-            const { name, owner } = repo;
+            const { number, pull_request, repository } = context.payload;
+            const { name, owner } = repository;
             const { login } = owner;
             const previewUrl = `https://${login}.github.io/${name}/${number}/`;
 
             github.issues.createComment({
               ...context.issue,
               body: `プレビューは以下のURLでご確認ください。\n\n> ${previewUrl}`
-            })
+            });
 
