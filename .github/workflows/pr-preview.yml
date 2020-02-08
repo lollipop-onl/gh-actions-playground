@@ -30,3 +30,4 @@ jobs:
           PUBLISH_DIR: ./dist
         with:
           keepFiles: true
+
