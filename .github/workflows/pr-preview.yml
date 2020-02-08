@@ -19,6 +19,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - run: yarn install
       - run: yarn build
+        env:
+          BASE_PATH: ./
       - name: Pull Request番号を取得
         id: pull-number
         run: echo "::set-output name=number::$(echo $GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
