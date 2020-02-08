@@ -1,0 +1,9 @@
+name: Awesome workflow
+on: push
+
+jobs:
+  test:
+    name: Awesome workflow job
+    runs-on: ubuntu
+    steps:
+      - run: echo success!
