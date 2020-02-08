@@ -4,6 +4,6 @@ on: push
 jobs:
   test:
     name: Awesome workflow job
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
       - run: echo success!
