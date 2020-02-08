@@ -22,12 +22,14 @@ jobs:
       - name: Pull Request番号を取得
         id: pull-number
         run: echo "::set-output name=number::$(echo $GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
-      - run: mv dist dist/${{ steps.pull-number.outputs.number }}
+      - run: |
+          cp dist public/${{ steps.pull-number.outputs.number }}/
+          pc -r dist public/${{ steps.pull-number.outputs.number }}/
       - uses: peaceiris/actions-gh-pages@v2
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./dist
+          PUBLISH_DIR: ./public
         with:
           keepFiles: true
   comment:
