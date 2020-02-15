@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@nuxt/typescript-build": "^0.5.0",
+    "cpx": "^1.5.0",
     "node-sass": "^4.13.0",
     "nuxt": "^2.10.2",
     "nuxt-property-decorator": "^2.5.0"
