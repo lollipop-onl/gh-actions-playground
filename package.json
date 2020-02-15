@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@nuxt/typescript-build": "^0.5.0",
+    "cpx": "^1.5.0",
     "node-sass": "^4.13.0",
     "nuxt": "^2.10.2",
     "nuxt-property-decorator": "^2.5.0"
@@ -22,16 +23,13 @@
   "devDependencies": {
     "@nuxt/typescript-runtime": "^0.3.1",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
-    "@types/jest": "^24.9.1",
     "eslint": "^6.7.2",
     "eslint-plugin-jest": "^23.6.0",
     "eslint-plugin-testcafe": "^0.2.1",
-    "jest": "^25.1.0",
     "sass-loader": "^8.0.0",
     "stylelint": "^12.0.0",
     "stylelint-config-recommended-scss": "^4.1.0",
     "stylelint-scss": "^3.13.0",
-    "testcafe": "^1.7.0",
-    "ts-jest": "^25.0.0"
+    "testcafe": "^1.7.0"
   }
 }
